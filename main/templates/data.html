@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>data from form</title>
+  </head>
+  <body>
+    {% for leader in data %}
+    <li>
+      <p> {{ leader.first_name}} {{ leader.second_name }}, is
+          {{ leader.nationality }}</p>
+    </li>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>data form</title>
+  </head>
+  <body>
+    <h1>the data from the form</h1>
+    {% for data in formdata %}
+    <p>{{ data.first_name }}, {{ data.second_name }} is {{ data.nationality }} </p>
+    {% endfor %}
+  </body>
+</html>
