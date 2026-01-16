@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form2.css' %}">
+  </head>
+  <body>
+    <h1>Register</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+    {% if form.errors %}
+    <div style="color: red;">
+      <p>
+        {{ form.errors }}
+        {{ form.email }}
+        {{ form.email.label_tag }}
+        {{ form.email.errors }}
+      </p>
+    </div>
+    {% endif %}
+  </body>
+</html>
