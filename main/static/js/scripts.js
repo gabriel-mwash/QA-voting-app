@@ -1,0 +1,153 @@
+document.querySelector(".submit-btn").addEventListener("click", function (e) {
+  let message = document.querySelector(".question-area").value.trim();
+  let minQuestionLength = 20;
+  if (message.length < minQuestionLength) {
+    alert("message too short or invalid message");
+    e.preventDefault();
+  }
+  else {
+    document.querySelector(".question-form").submit();
+    document.querySelector(".question-area").value = "";
+  }
+});
+
+/*
+let batch = 0;
+
+
+function fetchQuestions() {
+
+  let response = fetch(`http://localhost/fetch_questions.php?batch=${batch}`);
+
+  response.then(function(res) {
+    if(res.ok) {
+      return res.json();
+    }
+    else {
+      throw new Error("Network response was not ok");
+    }
+  })
+
+
+  .then(function(data) {
+
+    let container = document.querySelector(".query-container");
+    if (data.length === 0 && batch === 0) {
+      let noQuestionPad = document.createElement("div");
+      noQuestionPad.classList.add("no-question", "fade-in");
+      noQuestionPad.innerHTML = `
+          <p class="query-text" style="font-family: 'Fredoka One', 
+            serif;font-size: 25px;text-align: center;padding: 0.5rem; margin: 0.5rem 0 0.5rem 0;"
+            >NO QUESTIONS YET <br>
+            </p>
+     `;
+
+      container.appendChild(noQuestionPad);
+      document.getElementById("LoadMore").style.display="none";
+      return;
+    }
+
+    // console.log(data[0]);
+
+    data.forEach(function(question) {
+
+      let queryPad = document.createElement("div");
+      queryPad.classList.add("container", "query-pad", "fade-in");
+
+      queryPad.innerHTML = `
+      <div class="row">
+          <div class="col-md-12 d-flex query-section">
+              <div class="query-container" style="margin: 0px;">
+                  <p class="query-text" style="font-family: 'Fredoka One', 
+                    serif;font-size: 25px;text-align: center;margin: 0.5rem 0 0.5rem 0;"
+                    >${question.question}</p>
+              </div>
+              <div class="flex-wrap name-query" style="margin-bottom: 10px;">
+                  <div class="text-center name-qw" style="width: fit-content;">
+                    <span style="border-radius: 5px;margin-right: 3px;margin-left: 3px;">${question.name}</span>
+                  </div>
+                  <div class="text-center" style="background: #94d82d;border-radius: 5px;margin-left: 5px;padding: 3px;">
+                    <span class="camp-qw">${question.institute}</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      `;
+      
+      container.appendChild(queryPad);
+    });
+
+    if (data.length < 7) {
+      document.getElementById("LoadMore").style.display="none";
+    }
+    batch++;
+  })
+  .catch(function(error) {
+    console.error("there was a problem with the fetch operation: ", error);
+  })
+}
+
+fetchQuestions();
+
+document.getElementById("LoadMore" ).addEventListener("click", fetchQuestions);
+
+document.addEventListener("DOMContentLoaded", function () {
+  let clearBtn = document.getElementById("clear-questions");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function(event) { 
+      event.preventDefault();
+      if (confirm("Are you sure you want to clear all questions? This cannot be undone!")) {
+        fetch("clear-questions.php", {
+          method: "POST",
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data);
+          location.reload();
+        })
+        .catch(error => console.error("Error: ", error));
+      }
+    });
+  }
+});
+  
+
+document.getElementById("launch-vote").addEventListener("click", function () {
+  const questions = [];
+  document.querySelectorAll(".question-block").forEach(block => {
+    const questionText = block.querySelector(".question-input").value.trim();
+    const questionType = block.querySelector(".question-type").value;
+    
+    const questionData = 
+      { 
+        question_text: questionText, 
+        question_type: questionType, 
+        options: [] 
+      };
+
+    if (questionType === "Single" || questionType === "Multiple") {
+      block.querySelectorAll(".option-input").forEach(option => {
+        if (option.value.trim() !== "") {
+          questionData.options.push(option.value.trim());
+        }
+      });
+    }
+    questions.push(questionData);
+  });
+
+  fetch("save-voting-questions.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ questions: questions })
+  }).then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert("Questions saved successfully!");
+    } 
+    else {
+      alert("Error saving questions.");
+    }
+  });
+});
+
+*/
