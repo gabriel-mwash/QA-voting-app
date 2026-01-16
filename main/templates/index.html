@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>q and a</title>
+  </head>
+  <body>
+    <h2>Q and A session</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button type="submit">submit</button>
+      <button type="moderator login">moderator login</button>
+    </form>
+  </body>
+</html>
