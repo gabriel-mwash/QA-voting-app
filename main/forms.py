@@ -1,16 +1,5 @@
 from django import forms
-from .models import user_data, Question
-
-
-class userForm(forms.ModelForm):
-    class Meta:
-        model = user_data
-        fields = ["first_name", "second_name", "age", "nationality"]
-
-
-class anotherForm(forms.Form):
-    username = forms.CharField(max_length=50)
-    email = forms.EmailField()
+from .models import Question
 
 
 class QnAForm(forms.ModelForm):
