@@ -1,5 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import QnAForm
+from .models import Question
 
 
 def home(request):
@@ -16,3 +18,9 @@ def home(request):
 
 def success_view(request):
     return render(request, "success.html")
+
+
+def submittedQuestions(request):
+    questions = Question.objects.all()
+    return render(request, "questions.html",
+                  {"questions": questions})
