@@ -11,13 +11,12 @@ document.querySelector(".submit-btn").addEventListener("click", function (e) {
   }
 });
 
-/*
 let batch = 0;
 
 
 function fetchQuestions() {
 
-  let response = fetch(`http://localhost/fetch_questions.php?batch=${batch}`);
+  let response = fetch(`http://localhost/fetch_questions?batch=${batch}`);
 
   response.then(function(res) {
     if(res.ok) {
@@ -97,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearBtn.addEventListener("click", function(event) { 
       event.preventDefault();
       if (confirm("Are you sure you want to clear all questions? This cannot be undone!")) {
-        fetch("clear-questions.php", {
+        fetch("clear-questions", {
           method: "POST",
         })
         .then(response => response.text())
@@ -135,7 +134,7 @@ document.getElementById("launch-vote").addEventListener("click", function () {
     questions.push(questionData);
   });
 
-  fetch("save-voting-questions.php", {
+  fetch("save-voting-questions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ questions: questions })
