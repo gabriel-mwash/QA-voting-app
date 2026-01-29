@@ -1,0 +1,25 @@
+{% include 'nav-bar.html' %}
+{% load static %}
+
+  <div class="refresh">
+    <a class="btn btn-primary btn-lg fw-bolder check-out-btn fade-in" role="button" id="refresh" href="questions/">Refresh</a>
+  </div>
+  <div class="query-container">
+    {% for question in questions %}
+    {% include 'questionpad.html' %}
+    {% endfor %}
+  </div>
+
+  <div class="footer">
+    <button class="btn btn-primary btn-lg fw-bolder check-out-btn" id="LoadMore">Load more</button>
+    <a class="btn btn-primary btn-lg fw-bolder check-out-btn fade-in" role="button" id="oldLink" href="#refresh" style="/*display: none;*/">to top of page</a>
+  </div>
+  <div class="clear">
+    <a class="btn btn-danger btn-lg fw-bolder check-out-btn fade-in" role="button" id="clear-questions" href="#">
+      <i class="fa fa-trash"></i>
+      clear</a>
+  </div>
+  <script src="{% static 'js/scripts.js' %}" defer></script>
+</body>
+
+</html>
