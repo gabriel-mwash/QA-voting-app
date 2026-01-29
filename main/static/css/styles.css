@@ -190,7 +190,8 @@ h1 {
 
 
 .query-section {
-  background: #ffdf00;
+  background: red;
+  /* background: #ffdf00; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
